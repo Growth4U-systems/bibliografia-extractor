@@ -127,6 +127,45 @@
     },
     {
       "parameters": {
+        "method": "GET",
+        "url": "=https://api.notion.com/v1/databases/{{ $('Get Notion Page').item.json.parent.database_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "notionApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Notion-Version",
+              "value": "2022-06-28"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-database-schema",
+      "name": "Get Database Schema",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [990, 200],
+      "credentials": {
+        "notionApi": {
+          "id": "5Oo5om15SSiHCmIa",
+          "name": "Notion Growth4U"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract existing authors from Notion database schema\nconst platformData = $('Extract Page Data').first().json;\nconst dbSchema = $input.first().json;\n\nlet existingAuthors = [];\ntry {\n  const autorProperty = dbSchema.properties?.Autor;\n  if (autorProperty?.multi_select?.options) {\n    existingAuthors = autorProperty.multi_select.options.map(opt => ({\n      name: opt.name,\n      nameLower: opt.name.toLowerCase()\n    }));\n  }\n} catch (e) {\n  console.log('Could not extract authors:', e.message);\n}\n\nreturn [{\n  json: {\n    ...platformData,\n    existingAuthors: existingAuthors\n  }\n}];"
+      },
+      "id": "extract-authors-list",
+      "name": "Extract Authors List",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1000, 200]
+    },
+    {
+      "parameters": {
         "jsCode": "// Detect platform from URL\nconst prevData = $('Extract Page Data').first().json;\nconst url = prevData.url.toLowerCase();\n\nlet platform = 'article'; // default\nlet contentSubtype = 'standard';\nlet cleanUrl = prevData.url;\n\n// YouTube detection\nif (url.match(/youtube\\.com\\/watch|youtu\\.be\\/|youtube\\.com\\/shorts/i)) {\n  platform = 'youtube';\n  // Extract video ID\n  const match = prevData.url.match(/(?:youtube\\.com\\/watch\\?v=|youtu\\.be\\/|youtube\\.com\\/shorts\\/)([a-zA-Z0-9_-]{11})/);\n  if (match) {\n    contentSubtype = match[1]; // video ID\n  }\n}\n// Twitter/X detection\nelse if (url.match(/twitter\\.com\\/|x\\.com\\//i)) {\n  platform = 'twitter';\n  // Clean URL - remove tracking parameters\n  cleanUrl = prevData.url.split('?')[0].replace('www.x.com', 'x.com').replace('www.twitter.com', 'twitter.com');\n  // We'll detect video vs text later in the Twitter branch\n  contentSubtype = 'unknown'; // will be determined by API response\n}\n// LinkedIn detection\nelse if (url.match(/linkedin\\.com\\/posts|linkedin\\.com\\/feed\\/update/i)) {\n  platform = 'linkedin';\n}\n// Instagram detection\nelse if (url.match(/instagram\\.com\\/p\\/|instagram\\.com\\/reel\\//i)) {\n  platform = 'instagram';\n}\n// Facebook detection\nelse if (url.match(/facebook\\.com\\/.*\\/posts|facebook\\.com\\/.*\\/videos|fb\\.watch/i)) {\n  platform = 'facebook';\n}\n// TikTok detection (bonus - uses Supadata)\nelse if (url.match(/tiktok\\.com\\/@.*\\/video/i)) {\n  platform = 'tiktok';\n}\n\nreturn [{\n  json: {\n    ...prevData,\n    platform: platform,\n    contentSubtype: contentSubtype,\n    cleanUrl: cleanUrl\n  }\n}];"
       },
       "id": "detect-platform",
@@ -932,7 +971,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Parse LLM response and prepare data for Notion\nconst extractedData = $('Extraction Success?').item.json;\nconst llmResponse = $input.first().json.text || '';\n\n// Helper function to extract XML tags\nconst extractTag = (tag, text) => {\n  const regex = new RegExp(`<${tag}>([\\\\s\\\\S]*?)<\\\\/${tag}>`, 'i');\n  const match = text.match(regex);\n  return match ? match[1].trim() : '';\n};\n\n// Extract all fields from LLM response\nconst idioma = extractTag('idioma', llmResponse) || 'es';\nconst categoria = extractTag('categoria', llmResponse) || extractTag('categoría', llmResponse) || 'General';\nconst keywords = extractTag('keywords', llmResponse) || '';\nconst tituloMejorado = extractTag('titulo_mejorado', llmResponse) || extractedData.title;\nconst resumen = extractTag('resumen', llmResponse) || '';\nconst contenidoFormateado = extractTag('contenido_formateado', llmResponse) || '';\n\n// Clean up categoria to max 2 words\nconst categoriaClean = categoria.split(/\\s+/).slice(0, 2).join(' ');\n\n// Parse keywords into array\nconst keywordsArray = keywords.split(',').map(k => k.trim()).filter(k => k.length > 0).slice(0, 5);\n\nreturn [{\n  json: {\n    // Original data\n    pageId: extractedData.pageId,\n    url: extractedData.url,\n    notionPageUrl: extractedData.notionPageUrl,\n    platform: extractedData.platform,\n    contentType: extractedData.contentType,\n    \n    // Extracted/improved data\n    title: tituloMejorado.substring(0, 200),\n    author: extractedData.author,\n    \n    // LLM analysis results\n    language: idioma,\n    category: categoriaClean,\n    keywords: keywordsArray,\n    summary: resumen.substring(0, 2000),\n    formattedContent: contenidoFormateado,\n    \n    // Metadata\n    thumbnailUrl: extractedData.thumbnailUrl,\n    duration: extractedData.duration,\n    publishDate: extractedData.publishDate,\n    metrics: extractedData.metrics,\n    \n    // Processing info\n    processedAt: new Date().toISOString(),\n    extractionSuccess: true\n  }\n}];"
+        "jsCode": "// Parse LLM response and prepare data for Notion\nconst extractedData = $('Extraction Success?').item.json;\nconst llmResponse = $input.first().json.text || '';\n\n// Get existing authors from earlier in the workflow\nlet existingAuthors = [];\ntry {\n  existingAuthors = $('Extract Authors List').first().json.existingAuthors || [];\n} catch (e) {\n  console.log('Could not get existing authors');\n}\n\n// Hardcoded valid categories\nconst VALID_CATEGORIES = [\n  'Business Strategy',\n  'Career & Leadership',\n  'Content Creation',\n  'Growth',\n  'Mindset & Communication',\n  'SEO',\n  'Social Media',\n  'Lead Magnet',\n  'CRO',\n  'Affiliates & Influencers',\n  'AI Automation',\n  'Vibe Coding',\n  'Paid Ads',\n  'Marketing',\n  'Other'\n];\n\n// Helper: extract XML tags\nconst extractTag = (tag, text) => {\n  const regex = new RegExp(`<${tag}>([\\\\s\\\\S]*?)<\\\\/${tag}>`, 'i');\n  const match = text.match(regex);\n  return match ? match[1].trim() : '';\n};\n\n// Helper: find matching category\nconst findMatchingCategory = (llmCategory) => {\n  if (!llmCategory) return 'Other';\n  const normalizedInput = llmCategory.toLowerCase().trim();\n\n  // Exact match\n  const exactMatch = VALID_CATEGORIES.find(c => c.toLowerCase() === normalizedInput);\n  if (exactMatch) return exactMatch;\n\n  // Partial match\n  const partialMatch = VALID_CATEGORIES.find(c => {\n    const norm = c.toLowerCase();\n    return normalizedInput.includes(norm) || norm.includes(normalizedInput);\n  });\n  if (partialMatch) return partialMatch;\n\n  // Keyword matching\n  const keywordMap = {\n    'Business Strategy': ['business', 'strategy', 'estrategia', 'negocio'],\n    'Career & Leadership': ['career', 'leadership', 'carrera', 'liderazgo'],\n    'Content Creation': ['content', 'creation', 'contenido', 'creacion'],\n    'Growth': ['growth', 'crecimiento', 'scale'],\n    'Mindset & Communication': ['mindset', 'communication', 'comunicacion'],\n    'SEO': ['seo', 'search', 'organic'],\n    'Social Media': ['social', 'media', 'redes'],\n    'Lead Magnet': ['lead', 'magnet', 'leads'],\n    'CRO': ['cro', 'conversion', 'optimize'],\n    'Affiliates & Influencers': ['affiliate', 'influencer', 'afiliado'],\n    'AI Automation': ['ai', 'automation', 'ia', 'automatizacion'],\n    'Vibe Coding': ['vibe', 'coding', 'code', 'programacion'],\n    'Paid Ads': ['paid', 'ads', 'ppc', 'publicidad'],\n    'Marketing': ['marketing', 'mercadeo']\n  };\n\n  for (const [category, keywords] of Object.entries(keywordMap)) {\n    if (keywords.some(kw => normalizedInput.includes(kw))) {\n      return category;\n    }\n  }\n\n  return 'Other';\n};\n\n// Helper: find matching author\nconst findMatchingAuthor = (extractedAuthor) => {\n  if (!extractedAuthor || existingAuthors.length === 0) return extractedAuthor;\n\n  const normalizedInput = extractedAuthor.toLowerCase().trim();\n\n  // Exact match\n  const exactMatch = existingAuthors.find(a => a.nameLower === normalizedInput);\n  if (exactMatch) return exactMatch.name;\n\n  // Partial match\n  const partialMatch = existingAuthors.find(a =>\n    normalizedInput.includes(a.nameLower) || a.nameLower.includes(normalizedInput)\n  );\n  if (partialMatch) return partialMatch.name;\n\n  // Handle @handles\n  const cleanedInput = normalizedInput.replace(/^@/, '');\n  const handleMatch = existingAuthors.find(a =>\n    a.nameLower.includes(cleanedInput) || cleanedInput.includes(a.nameLower)\n  );\n  if (handleMatch) return handleMatch.name;\n\n  return extractedAuthor;\n};\n\n// Extract LLM response fields\nconst idioma = extractTag('idioma', llmResponse) || 'es';\nconst llmCategoria = extractTag('categoria', llmResponse) || extractTag('categoría', llmResponse) || '';\nconst keywords = extractTag('keywords', llmResponse) || '';\nconst tituloMejorado = extractTag('titulo_mejorado', llmResponse) || extractedData.title;\nconst resumen = extractTag('resumen', llmResponse) || '';\nconst contenidoFormateado = extractTag('contenido_formateado', llmResponse) || '';\n\n// Apply mapping\nconst categoria = findMatchingCategory(llmCategoria);\nconst matchedAuthor = findMatchingAuthor(extractedData.author);\n\nconst keywordsArray = keywords.split(',').map(k => k.trim()).filter(k => k.length > 0).slice(0, 5);\n\nreturn [{\n  json: {\n    pageId: extractedData.pageId,\n    url: extractedData.url,\n    notionPageUrl: extractedData.notionPageUrl,\n    platform: extractedData.platform,\n    contentType: extractedData.contentType,\n    title: tituloMejorado.substring(0, 200),\n    author: matchedAuthor,\n    language: idioma,\n    category: categoria,\n    keywords: keywordsArray,\n    summary: resumen.substring(0, 2000),\n    formattedContent: contenidoFormateado,\n    thumbnailUrl: extractedData.thumbnailUrl,\n    duration: extractedData.duration,\n    publishDate: extractedData.publishDate,\n    metrics: extractedData.metrics,\n    processedAt: new Date().toISOString(),\n    extractionSuccess: true\n  }\n}];"
       },
       "id": "parse-llm-response",
       "name": "Parse LLM Response",
@@ -1210,6 +1249,28 @@
       ]
     },
     "Set Status Processing": {
+      "main": [
+        [
+          {
+            "node": "Get Database Schema",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Database Schema": {
+      "main": [
+        [
+          {
+            "node": "Extract Authors List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Authors List": {
       "main": [
         [
           {
