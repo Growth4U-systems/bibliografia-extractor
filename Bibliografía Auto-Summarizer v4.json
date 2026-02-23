@@ -11,7 +11,10 @@
       "name": "Notion Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
-      "position": [0, 300],
+      "position": [
+        0,
+        300
+      ],
       "webhookId": "bibliografia-processor-v4"
     },
     {
@@ -28,7 +31,10 @@
       "name": "Get Notion Page",
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.2,
-      "position": [220, 300],
+      "position": [
+        220,
+        300
+      ],
       "credentials": {
         "notionApi": {
           "id": "5Oo5om15SSiHCmIa",
@@ -44,7 +50,10 @@
       "name": "Extract Page Data",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [440, 300]
+      "position": [
+        440,
+        300
+      ]
     },
     {
       "parameters": {
@@ -92,7 +101,10 @@
       "name": "Validate URL",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
-      "position": [660, 300]
+      "position": [
+        660,
+        300
+      ]
     },
     {
       "parameters": {
@@ -117,7 +129,10 @@
       "name": "Set Status Processing",
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.2,
-      "position": [880, 200],
+      "position": [
+        880,
+        200
+      ],
       "credentials": {
         "notionApi": {
           "id": "5Oo5om15SSiHCmIa",
@@ -146,7 +161,10 @@
       "name": "Get Database Schema",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [990, 200],
+      "position": [
+        990,
+        200
+      ],
       "credentials": {
         "notionApi": {
           "id": "5Oo5om15SSiHCmIa",
@@ -162,7 +180,10 @@
       "name": "Extract Authors List",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1000, 200]
+      "position": [
+        1000,
+        200
+      ]
     },
     {
       "parameters": {
@@ -172,7 +193,10 @@
       "name": "Detect Platform",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1100, 200]
+      "position": [
+        1100,
+        200
+      ]
     },
     {
       "parameters": {
@@ -349,7 +373,10 @@
       "name": "Route by Platform",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
-      "position": [1320, 200]
+      "position": [
+        1320,
+        200
+      ]
     },
     {
       "parameters": {
@@ -373,7 +400,10 @@
       "name": "YouTube Metadata (Supadata)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1600, -200],
+      "position": [
+        1600,
+        -200
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "02Pk5zQzVVlLzcbb",
@@ -412,7 +442,10 @@
       "name": "YouTube Transcript (Supadata)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1840, -200],
+      "position": [
+        1840,
+        -200
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "02Pk5zQzVVlLzcbb",
@@ -429,7 +462,10 @@
       "name": "Merge YouTube Data",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2080, -200]
+      "position": [
+        2080,
+        -200
+      ]
     },
     {
       "parameters": {
@@ -448,7 +484,10 @@
       "name": "Twitter Scraper (Apify)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1600, 0],
+      "position": [
+        1600,
+        0
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "Growth4UApify",
@@ -471,7 +510,10 @@
       "name": "Twitter Get Results",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1840, 0],
+      "position": [
+        1840,
+        0
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "Growth4UApify",
@@ -488,7 +530,10 @@
       "name": "Detect Twitter Type",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2080, 0]
+      "position": [
+        2080,
+        0
+      ]
     },
     {
       "parameters": {
@@ -548,7 +593,10 @@
       "name": "Switch Twitter Type",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
-      "position": [2320, 0]
+      "position": [
+        2320,
+        0
+      ]
     },
     {
       "parameters": {
@@ -576,7 +624,10 @@
       "name": "Twitter Video Transcript",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [2560, -80],
+      "position": [
+        2560,
+        -80
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "02Pk5zQzVVlLzcbb",
@@ -593,7 +644,10 @@
       "name": "Merge Twitter Video",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2800, -80]
+      "position": [
+        2800,
+        -80
+      ]
     },
     {
       "parameters": {
@@ -603,7 +657,10 @@
       "name": "Merge Twitter Text",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2560, 80]
+      "position": [
+        2560,
+        80
+      ]
     },
     {
       "parameters": {
@@ -622,7 +679,10 @@
       "name": "LinkedIn Scraper (Apify)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1600, 200],
+      "position": [
+        1600,
+        200
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "Growth4UApify",
@@ -646,7 +706,10 @@
       "name": "LinkedIn Get Results",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1840, 200],
+      "position": [
+        1840,
+        200
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "Growth4UApify",
@@ -663,7 +726,10 @@
       "name": "Merge LinkedIn Data",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2080, 200]
+      "position": [
+        2080,
+        200
+      ]
     },
     {
       "parameters": {
@@ -682,7 +748,10 @@
       "name": "Instagram Scraper (Apify)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1600, 400],
+      "position": [
+        1600,
+        400
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "Growth4UApify",
@@ -705,7 +774,10 @@
       "name": "Instagram Get Results",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1840, 400],
+      "position": [
+        1840,
+        400
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "Growth4UApify",
@@ -722,7 +794,10 @@
       "name": "Merge Instagram Data",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2080, 400]
+      "position": [
+        2080,
+        400
+      ]
     },
     {
       "parameters": {
@@ -741,7 +816,10 @@
       "name": "Facebook Scraper (Apify)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1600, 600],
+      "position": [
+        1600,
+        600
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "Growth4UApify",
@@ -764,7 +842,10 @@
       "name": "Facebook Get Results",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1840, 600],
+      "position": [
+        1840,
+        600
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "Growth4UApify",
@@ -781,7 +862,10 @@
       "name": "Merge Facebook Data",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2080, 600]
+      "position": [
+        2080,
+        600
+      ]
     },
     {
       "parameters": {
@@ -805,7 +889,10 @@
       "name": "TikTok Metadata (Supadata)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1600, 800],
+      "position": [
+        1600,
+        800
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "02Pk5zQzVVlLzcbb",
@@ -844,7 +931,10 @@
       "name": "TikTok Transcript (Supadata)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1840, 800],
+      "position": [
+        1840,
+        800
+      ],
       "credentials": {
         "httpHeaderAuth": {
           "id": "02Pk5zQzVVlLzcbb",
@@ -861,7 +951,10 @@
       "name": "Merge TikTok Data",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [2080, 800]
+      "position": [
+        2080,
+        800
+      ]
     },
     {
       "parameters": {
@@ -874,7 +967,10 @@
       "name": "Article Extractor (Jina)",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [1600, 1000],
+      "position": [
+        1600,
+        1000
+      ],
       "continueOnFail": true
     },
     {
@@ -885,7 +981,10 @@
       "name": "Merge Article Data",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1840, 1000]
+      "position": [
+        1840,
+        1000
+      ]
     },
     {
       "parameters": {
@@ -899,7 +998,10 @@
       "name": "Merge All Branches",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3,
-      "position": [2560, 400]
+      "position": [
+        2560,
+        400
+      ]
     },
     {
       "parameters": {
@@ -929,7 +1031,10 @@
       "name": "Extraction Success?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
-      "position": [2800, 400]
+      "position": [
+        2800,
+        400
+      ]
     },
     {
       "parameters": {
@@ -940,7 +1045,10 @@
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
-      "position": [3060, 500],
+      "position": [
+        3060,
+        500
+      ],
       "id": "llm-model",
       "name": "OpenRouter Chat Model",
       "credentials": {
@@ -965,19 +1073,25 @@
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.8,
-      "position": [3040, 300],
+      "position": [
+        3040,
+        300
+      ],
       "id": "llm-analysis",
       "name": "LLM Analysis"
     },
     {
       "parameters": {
-        "jsCode": "// Parse LLM response and prepare data for Notion\\nconst extractedData = $('Extraction Success?').item.json;\\nconst llmResponse = $input.first().json.text || '';\\n\\n// Get existing categories and authors from earlier in the workflow (dynamic from Notion)\\nlet existingCategories = [];\\nlet existingAuthors = [];\\ntry {\\n  const schemaData = $('Extract Authors List').first().json;\\n  existingCategories = schemaData.existingCategories || [];\\n  existingAuthors = schemaData.existingAuthors || [];\\n} catch (e) {\\n  console.log('Could not get schema data');\\n}\\n\\n// Helper function to extract XML tags\\nconst extractTag = (tag, text) => {\\n  const regex = new RegExp(`<${tag}>([\\\\\\\\s\\\\\\\\S]*?)<\\\\\\\\/${tag}>`, 'i');\\n  const match = text.match(regex);\\n  return match ? match[1].trim() : '';\\n};\\n\\n// Helper: find matching category from Notion's existing categories\\nconst findMatchingCategory = (llmCategory) => {\\n  if (!llmCategory || existingCategories.length === 0) {\\n    return existingCategories.includes('Other') ? 'Other' : (existingCategories[0] || 'Other');\\n  }\\n\\n  const normalizedInput = llmCategory.toLowerCase().trim();\\n\\n  // Exact match (case-insensitive)\\n  const exactMatch = existingCategories.find(c => c.toLowerCase() === normalizedInput);\\n  if (exactMatch) return exactMatch;\\n\\n  // Partial match - category contains input or input contains category\\n  const partialMatch = existingCategories.find(c => {\\n    const norm = c.toLowerCase();\\n    return normalizedInput.includes(norm) || norm.includes(normalizedInput);\\n  });\\n  if (partialMatch) return partialMatch;\\n\\n  // Word-based matching\\n  const inputWords = normalizedInput.split(/\\\\s+/);\\n  const wordMatch = existingCategories.find(c => {\\n    const catWords = c.toLowerCase().split(/\\\\s+/);\\n    return inputWords.some(iw => catWords.some(cw => iw === cw || iw.includes(cw) || cw.includes(iw)));\\n  });\\n  if (wordMatch) return wordMatch;\\n\\n  return existingCategories.includes('Other') ? 'Other' : (existingCategories[0] || 'Other');\\n};\\n\\n// ============ FUZZY MATCHING HELPERS ============\\n\\n// Levenshtein distance for fuzzy string comparison\\nconst levenshteinDistance = (str1, str2) => {\\n  const m = str1.length, n = str2.length;\\n  const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));\\n  \\n  for (let i = 0; i <= m; i++) dp[i][0] = i;\\n  for (let j = 0; j <= n; j++) dp[0][j] = j;\\n  \\n  for (let i = 1; i <= m; i++) {\\n    for (let j = 1; j <= n; j++) {\\n      if (str1[i-1] === str2[j-1]) {\\n        dp[i][j] = dp[i-1][j-1];\\n      } else {\\n        dp[i][j] = 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);\\n      }\\n    }\\n  }\\n  return dp[m][n];\\n};\\n\\n// Calculate similarity score (0-1, higher is better)\\nconst similarityScore = (str1, str2) => {\\n  const maxLen = Math.max(str1.length, str2.length);\\n  if (maxLen === 0) return 1;\\n  const distance = levenshteinDistance(str1, str2);\\n  return 1 - (distance / maxLen);\\n};\\n\\n// Normalize author name for comparison\\nconst normalizeAuthorName = (name) => {\\n  return name\\n    .toLowerCase()\\n    .replace(/^@/, '')                    // Remove @ prefix\\n    .replace(/[^a-z0-9\\\\s]/gi, '')         // Remove special chars except spaces\\n    .replace(/\\\\s+/g, ' ')                 // Normalize spaces\\n    .trim();\\n};\\n\\n// Extract key parts of a name for matching\\nconst getNameParts = (name) => {\\n  const normalized = normalizeAuthorName(name);\\n  const parts = normalized.split(' ').filter(p => p.length > 1);\\n  return {\\n    full: normalized,\\n    parts: parts,\\n    first: parts[0] || '',\\n    last: parts[parts.length - 1] || ''\\n  };\\n};\\n\\n// Helper: find matching author with fuzzy matching\\nconst findMatchingAuthor = (extractedAuthor) => {\\n  if (!extractedAuthor || existingAuthors.length === 0) return extractedAuthor;\\n\\n  const inputName = getNameParts(extractedAuthor);\\n  let bestMatch = null;\\n  let bestScore = 0;\\n  const THRESHOLD = 0.7; // Minimum similarity threshold\\n\\n  for (const author of existingAuthors) {\\n    const authorName = getNameParts(author.name);\\n    \\n    // 1. Exact match on normalized full name\\n    if (inputName.full === authorName.full) {\\n      return author.name;\\n    }\\n    \\n    // 2. Full name fuzzy match\\n    const fullScore = similarityScore(inputName.full, authorName.full);\\n    if (fullScore > bestScore && fullScore >= THRESHOLD) {\\n      bestScore = fullScore;\\n      bestMatch = author.name;\\n    }\\n    \\n    // 3. Check if one contains the other (handles \\\"Gary Vee\\\" vs \\\"garyvee\\\")\\n    if (inputName.full.includes(authorName.full) || authorName.full.includes(inputName.full)) {\\n      const containScore = 0.85;\\n      if (containScore > bestScore) {\\n        bestScore = containScore;\\n        bestMatch = author.name;\\n      }\\n    }\\n    \\n    // 4. First + Last name matching (handles \\\"Neil Patel\\\" vs \\\"Neal Patel\\\")\\n    if (inputName.parts.length >= 2 && authorName.parts.length >= 2) {\\n      const firstScore = similarityScore(inputName.first, authorName.first);\\n      const lastScore = similarityScore(inputName.last, authorName.last);\\n      \\n      // If last names match well and first names are similar\\n      if (lastScore >= 0.9 && firstScore >= 0.6) {\\n        const combinedScore = (firstScore * 0.4) + (lastScore * 0.6);\\n        if (combinedScore > bestScore) {\\n          bestScore = combinedScore;\\n          bestMatch = author.name;\\n        }\\n      }\\n    }\\n    \\n    // 5. Single word matching (handles usernames like \\\"hormozi\\\" matching \\\"Alex Hormozi\\\")\\n    if (inputName.parts.length === 1) {\\n      for (const part of authorName.parts) {\\n        const partScore = similarityScore(inputName.first, part);\\n        if (partScore >= 0.85 && partScore > bestScore) {\\n          bestScore = partScore;\\n          bestMatch = author.name;\\n        }\\n      }\\n    }\\n    \\n    // 6. Check if any significant word matches exactly\\n    for (const inputPart of inputName.parts) {\\n      if (inputPart.length < 3) continue; // Skip short words\\n      for (const authorPart of authorName.parts) {\\n        if (authorPart.length < 3) continue;\\n        if (inputPart === authorPart && bestScore < 0.8) {\\n          bestScore = 0.8;\\n          bestMatch = author.name;\\n        }\\n      }\\n    }\\n  }\\n\\n  // Return best match if found, otherwise return original\\n  return bestMatch || extractedAuthor;\\n};\\n\\n// ============ MAIN PROCESSING ============\\n\\n// Extract all fields from LLM response\\nconst idioma = extractTag('idioma', llmResponse) || 'es';\\nconst llmCategoria = extractTag('categoria', llmResponse) || extractTag('categoría', llmResponse) || '';\\nconst keywords = extractTag('keywords', llmResponse) || '';\\nconst tituloMejorado = extractTag('titulo_mejorado', llmResponse) || extractedData.title;\\nconst resumen = extractTag('resumen', llmResponse) || '';\\nconst contenidoFormateado = extractTag('contenido_formateado', llmResponse) || '';\\n\\n// Apply mapping using dynamic lists from Notion\\nconst categoria = findMatchingCategory(llmCategoria);\\nconst matchedAuthor = findMatchingAuthor(extractedData.author);\\n\\n// Parse keywords into array\\nconst keywordsArray = keywords.split(',').map(k => k.trim()).filter(k => k.length > 0).slice(0, 5);\\n\\nreturn [{\\n  json: {\\n    pageId: extractedData.pageId,\\n    url: extractedData.url,\\n    notionPageUrl: extractedData.notionPageUrl,\\n    platform: extractedData.platform,\\n    contentType: extractedData.contentType,\\n    title: tituloMejorado.substring(0, 200),\\n    author: matchedAuthor,\\n    language: idioma,\\n    category: categoria,\\n    keywords: keywordsArray,\\n    summary: resumen.substring(0, 2000),\\n    formattedContent: contenidoFormateado,\\n    thumbnailUrl: extractedData.thumbnailUrl,\\n    duration: extractedData.duration,\\n    publishDate: extractedData.publishDate,\\n    metrics: extractedData.metrics,\\n    processedAt: new Date().toISOString(),\\n    extractionSuccess: true\\n  }\\n}];"
+        "jsCode": "// Parse LLM response and prepare data for Notion\\nconst extractedData = $('Extraction Success?').item.json;\\nconst llmResponse = $input.first().json.text || '';\\n\\n// Get existing categories and authors from earlier in the workflow (dynamic from Notion)\\nlet existingCategories = [];\\nlet existingAuthors = [];\\ntry {\\n  const schemaData = $('Extract Authors List').first().json;\\n  existingCategories = schemaData.existingCategories || [];\\n  existingAuthors = schemaData.existingAuthors || [];\\n} catch (e) {\\n  console.log('Could not get schema data');\\n}\\n\\n// Helper function to extract XML tags\\nconst extractTag = (tag, text) => {\\n  const regex = new RegExp(`<${tag}>([\\\\\\\\s\\\\\\\\S]*?)<\\\\\\\\/${tag}>`, 'i');\\n  const match = text.match(regex);\\n  return match ? match[1].trim() : '';\\n};\\n\\n// Helper: find matching category from Notion's existing categories\\nconst findMatchingCategory = (llmCategory) => {\\n  if (!llmCategory || existingCategories.length === 0) {\\n    return existingCategories.includes('Other') ? 'Other' : (existingCategories[0] || 'Other');\\n  }\\n\\n  const normalizedInput = llmCategory.toLowerCase().trim();\\n\\n  // Exact match (case-insensitive)\\n  const exactMatch = existingCategories.find(c => c.toLowerCase() === normalizedInput);\\n  if (exactMatch) return exactMatch;\\n\\n  // Partial match - category contains input or input contains category\\n  const partialMatch = existingCategories.find(c => {\\n    const norm = c.toLowerCase();\\n    return normalizedInput.includes(norm) || norm.includes(normalizedInput);\\n  });\\n  if (partialMatch) return partialMatch;\\n\\n  // Word-based matching\\n  const inputWords = normalizedInput.split(/\\\\s+/);\\n  const wordMatch = existingCategories.find(c => {\\n    const catWords = c.toLowerCase().split(/\\\\s+/);\\n    return inputWords.some(iw => catWords.some(cw => iw === cw || iw.includes(cw) || cw.includes(iw)));\\n  });\\n  if (wordMatch) return wordMatch;\\n\\n  return existingCategories.includes('Other') ? 'Other' : (existingCategories[0] || 'Other');\\n};\\n\\n// ============ FUZZY MATCHING HELPERS ============\\n\\n// Levenshtein distance for fuzzy string comparison\\nconst levenshteinDistance = (str1, str2) => {\\n  const m = str1.length, n = str2.length;\\n  const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));\\n  \\n  for (let i = 0; i <= m; i++) dp[i][0] = i;\\n  for (let j = 0; j <= n; j++) dp[0][j] = j;\\n  \\n  for (let i = 1; i <= m; i++) {\\n    for (let j = 1; j <= n; j++) {\\n      if (str1[i-1] === str2[j-1]) {\\n        dp[i][j] = dp[i-1][j-1];\\n      } else {\\n        dp[i][j] = 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);\\n      }\\n    }\\n  }\\n  return dp[m][n];\\n};\\n\\n// Calculate similarity score (0-1, higher is better)\\nconst similarityScore = (str1, str2) => {\\n  const maxLen = Math.max(str1.length, str2.length);\\n  if (maxLen === 0) return 1;\\n  const distance = levenshteinDistance(str1, str2);\\n  return 1 - (distance / maxLen);\\n};\\n\\n// Normalize author name for comparison\\nconst normalizeAuthorName = (name) => {\\n  return name\\n    .toLowerCase()\\n    .replace(/^@/, '')                    // Remove @ prefix\\n    .replace(/[^a-z0-9\\\\s]/gi, '')         // Remove special chars except spaces\\n    .replace(/\\\\s+/g, ' ')                 // Normalize spaces\\n    .trim();\\n};\\n\\n// Extract key parts of a name for matching\\nconst getNameParts = (name) => {\\n  const normalized = normalizeAuthorName(name);\\n  const parts = normalized.split(' ').filter(p => p.length > 1);\\n  return {\\n    full: normalized,\\n    parts: parts,\\n    first: parts[0] || '',\\n    last: parts[parts.length - 1] || ''\\n  };\\n};\\n\\n// Helper: find matching author with fuzzy matching\\nconst findMatchingAuthor = (extractedAuthor) => {\\n  if (!extractedAuthor || existingAuthors.length === 0) return extractedAuthor;\\n\\n  const inputName = getNameParts(extractedAuthor);\\n  let bestMatch = null;\\n  let bestScore = 0;\\n  const THRESHOLD = 0.7; // Minimum similarity threshold\\n\\n  for (const author of existingAuthors) {\\n    const authorName = getNameParts(author.name);\\n    \\n    // 1. Exact match on normalized full name\\n    if (inputName.full === authorName.full) {\\n      return author.name;\\n    }\\n    \\n    // 2. Full name fuzzy match\\n    const fullScore = similarityScore(inputName.full, authorName.full);\\n    if (fullScore > bestScore && fullScore >= THRESHOLD) {\\n      bestScore = fullScore;\\n      bestMatch = author.name;\\n    }\\n    \\n    // 3. Check if one contains the other (handles \\\"Gary Vee\\\" vs \\\"garyvee\\\")\\n    if (inputName.full.includes(authorName.full) || authorName.full.includes(inputName.full)) {\\n      const containScore = 0.85;\\n      if (containScore > bestScore) {\\n        bestScore = containScore;\\n        bestMatch = author.name;\\n      }\\n    }\\n    \\n    // 4. First + Last name matching (handles \\\"Neil Patel\\\" vs \\\"Neal Patel\\\")\\n    if (inputName.parts.length >= 2 && authorName.parts.length >= 2) {\\n      const firstScore = similarityScore(inputName.first, authorName.first);\\n      const lastScore = similarityScore(inputName.last, authorName.last);\\n      \\n      // If last names match well and first names are similar\\n      if (lastScore >= 0.9 && firstScore >= 0.6) {\\n        const combinedScore = (firstScore * 0.4) + (lastScore * 0.6);\\n        if (combinedScore > bestScore) {\\n          bestScore = combinedScore;\\n          bestMatch = author.name;\\n        }\\n      }\\n    }\\n    \\n    // 5. Single word matching (handles usernames like \\\"hormozi\\\" matching \\\"Alex Hormozi\\\")\\n    if (inputName.parts.length === 1) {\\n      for (const part of authorName.parts) {\\n        const partScore = similarityScore(inputName.first, part);\\n        if (partScore >= 0.85 && partScore > bestScore) {\\n          bestScore = partScore;\\n          bestMatch = author.name;\\n        }\\n      }\\n    }\\n    \\n    // 6. Check if any significant word matches exactly\\n    for (const inputPart of inputName.parts) {\\n      if (inputPart.length < 3) continue; // Skip short words\\n      for (const authorPart of authorName.parts) {\\n        if (authorPart.length < 3) continue;\\n        if (inputPart === authorPart && bestScore < 0.8) {\\n          bestScore = 0.8;\\n          bestMatch = author.name;\\n        }\\n      }\\n    }\\n  }\\n\\n  // Return best match if found, otherwise return original\\n  return bestMatch || extractedAuthor;\\n};\\n\\n\\n// ============ MARKDOWN TO NOTION BLOCKS ============\\n\\nconst parseRichText = (text) => {\\n  if (!text) return [{ type: \"text\", text: { content: \"\" } }];\\n  const boldPattern = /(\\\\*\\\\*[^*]+\\\\*\\\\*)/g;\\n  const parts = text.split(boldPattern);\\n  const result = parts.filter(p => p.length > 0).map(part => {\\n    if (part.startsWith(\"**\") && part.endsWith(\"**\")) {\\n      return { type: \"text\", text: { content: part.slice(2, -2) }, annotations: { bold: true } };\\n    }\\n    return { type: \"text\", text: { content: part } };\\n  });\\n  return result.length > 0 ? result : [{ type: \"text\", text: { content: text } }];\\n};\\n\\nconst markdownToNotionBlocks = (markdown) => {\\n  if (!markdown) return [];\\n  const NL = String.fromCharCode(10);\\n  const lines = markdown.split(NL);\\n  const blocks = [];\\n  let currentParagraph = \"\";\\n  const flushParagraph = () => {\\n    const text = currentParagraph.trim();\\n    if (!text) { currentParagraph = \"\"; return; }\\n    for (let i = 0; i < text.length; i += 2000) {\\n      blocks.push({ object: \"block\", type: \"paragraph\", paragraph: { rich_text: parseRichText(text.substring(i, i + 2000)) } });\\n    }\\n    currentParagraph = \"\";\\n  };\\n  for (const line of lines) {\\n    const trimmed = line.trim();\\n    if (trimmed.startsWith(\"## \")) {\\n      flushParagraph();\\n      blocks.push({ object: \"block\", type: \"heading_2\", heading_2: { rich_text: [{ type: \"text\", text: { content: trimmed.slice(3) } }] } });\\n    } else if (trimmed.startsWith(\"### \")) {\\n      flushParagraph();\\n      blocks.push({ object: \"block\", type: \"heading_3\", heading_3: { rich_text: [{ type: \"text\", text: { content: trimmed.slice(4) } }] } });\\n    } else if (trimmed.startsWith(\"- \") || trimmed.startsWith(\"\\u2022 \")) {\\n      flushParagraph();\\n      const bulletText = trimmed.replace(/^[-\\u2022]\\\\s*/, \"\");\\n      blocks.push({ object: \"block\", type: \"bulleted_list_item\", bulleted_list_item: { rich_text: parseRichText(bulletText) } });\\n    } else if (trimmed === \"\") {\\n      flushParagraph();\\n    } else {\\n      currentParagraph += (currentParagraph ? \" \" : \"\") + trimmed;\\n    }\\n  }\\n  flushParagraph();\\n  return blocks.slice(0, 95);\\n};\\n// ============ MAIN PROCESSING ============\\n\\n// Extract all fields from LLM response\\nconst idioma = extractTag('idioma', llmResponse) || 'es';\\nconst llmCategoria = extractTag('categoria', llmResponse) || extractTag('categoría', llmResponse) || '';\\nconst keywords = extractTag('keywords', llmResponse) || '';\\nconst tituloMejorado = extractTag('titulo_mejorado', llmResponse) || extractedData.title;\\nconst resumen = extractTag('resumen', llmResponse) || '';\\nconst contenidoFormateado = extractTag('contenido_formateado', llmResponse) || '';\\n\\n// Apply mapping using dynamic lists from Notion\\nconst categoria = findMatchingCategory(llmCategoria);\\nconst matchedAuthor = findMatchingAuthor(extractedData.author);\\n\\n// Parse keywords into array\\nconst keywordsArray = keywords.split(',').map(k => k.trim()).filter(k => k.length > 0).slice(0, 5);\\n\\n\\n// ============ BUILD NOTION BODY ============\\nconst summaryBlocks = markdownToNotionBlocks(resumen);\\nconst contentBlocks = markdownToNotionBlocks(contenidoFormateado);\\nconst notionBody = {\\n  children: [\\n    { object: \"block\", type: \"divider\", divider: {} },\\n    { object: \"block\", type: \"heading_2\", heading_2: { rich_text: [{ type: \"text\", text: { content: \"\\ud83d\\udccb Resumen Generado\" } }] } },\\n    ...summaryBlocks,\\n    { object: \"block\", type: \"divider\", divider: {} },\\n    ...contentBlocks,\\n    { object: \"block\", type: \"divider\", divider: {} },\\n    { object: \"block\", type: \"callout\", callout: { rich_text: [{ type: \"text\", text: { content: \"Procesado: \" + new Date().toISOString() + \" | Plataforma: \" + extractedData.platform + \" | Idioma: \" + idioma } }], icon: { emoji: \"\\ud83e\\udd16\" } } }\\n  ]\\n};\\nreturn [{\\n  json: {\\n    pageId: extractedData.pageId,\\n    url: extractedData.url,\\n    notionPageUrl: extractedData.notionPageUrl,\\n    platform: extractedData.platform,\\n    contentType: extractedData.contentType,\\n    title: tituloMejorado.substring(0, 200),\\n    author: matchedAuthor,\\n    language: idioma,\\n    category: categoria,\\n    keywords: keywordsArray,\\n    summary: resumen.substring(0, 2000),\\n    formattedContent: contenidoFormateado,\\n    thumbnailUrl: extractedData.thumbnailUrl,\\n    duration: extractedData.duration,\\n    publishDate: extractedData.publishDate,\\n    metrics: extractedData.metrics,\\n    processedAt: new Date().toISOString(),\\n    extractionSuccess: true,\\n    notionBody: notionBody\\n  }\\n}];"
       },
       "id": "parse-llm-response",
       "name": "Parse LLM Response",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [3280, 300]
+      "position": [
+        3280,
+        300
+      ]
     },
     {
       "parameters": {
@@ -1038,7 +1152,10 @@
       "name": "Update Notion Properties",
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.2,
-      "position": [3520, 300],
+      "position": [
+        3520,
+        300
+      ],
       "credentials": {
         "notionApi": {
           "id": "5Oo5om15SSiHCmIa",
@@ -1063,14 +1180,17 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"children\": [\n    {\n      \"object\": \"block\",\n      \"type\": \"divider\",\n      \"divider\": {}\n    },\n    {\n      \"object\": \"block\",\n      \"type\": \"heading_2\",\n      \"heading_2\": {\n        \"rich_text\": [{ \"type\": \"text\", \"text\": { \"content\": \"📋 Resumen Generado\" } }]\n      }\n    },\n    {\n      \"object\": \"block\",\n      \"type\": \"paragraph\",\n      \"paragraph\": {\n        \"rich_text\": [{ \"type\": \"text\", \"text\": { \"content\": {{ JSON.stringify($('Parse LLM Response').item.json.summary.substring(0, 2000)) }} } }]\n      }\n    },\n    {\n      \"object\": \"block\",\n      \"type\": \"divider\",\n      \"divider\": {}\n    },\n    {\n      \"object\": \"block\",\n      \"type\": \"heading_2\",\n      \"heading_2\": {\n        \"rich_text\": [{ \"type\": \"text\", \"text\": { \"content\": \"📄 Contenido Extraído\" } }]\n      }\n    },\n    {\n      \"object\": \"block\",\n      \"type\": \"paragraph\",\n      \"paragraph\": {\n        \"rich_text\": [{ \"type\": \"text\", \"text\": { \"content\": {{ JSON.stringify($('Parse LLM Response').item.json.formattedContent.substring(0, 2000)) }} } }]\n      }\n    },\n    {\n      \"object\": \"block\",\n      \"type\": \"divider\",\n      \"divider\": {}\n    },\n    {\n      \"object\": \"block\",\n      \"type\": \"callout\",\n      \"callout\": {\n        \"rich_text\": [{ \"type\": \"text\", \"text\": { \"content\": \"Procesado: {{ $('Parse LLM Response').item.json.processedAt }} | Plataforma: {{ $('Parse LLM Response').item.json.platform }} | Idioma: {{ $('Parse LLM Response').item.json.language }}\" } }],\n        \"icon\": { \"emoji\": \"🤖\" }\n      }\n    }\n  ]\n}",
+        "jsonBody": "={{ JSON.stringify($('Parse LLM Response').item.json.notionBody) }}",
         "options": {}
       },
       "id": "append-notion-blocks",
       "name": "Append Content Blocks",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [3760, 300],
+      "position": [
+        3760,
+        300
+      ],
       "credentials": {
         "notionApi": {
           "id": "5Oo5om15SSiHCmIa",
@@ -1087,7 +1207,10 @@
       "name": "Classify Error",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [3040, 600]
+      "position": [
+        3040,
+        600
+      ]
     },
     {
       "parameters": {
@@ -1128,7 +1251,10 @@
       "name": "Update Notion Error",
       "type": "n8n-nodes-base.notion",
       "typeVersion": 2.2,
-      "position": [3280, 600],
+      "position": [
+        3280,
+        600
+      ],
       "credentials": {
         "notionApi": {
           "id": "5Oo5om15SSiHCmIa",
@@ -1160,7 +1286,10 @@
       "name": "Append Error Blocks",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [3520, 600],
+      "position": [
+        3520,
+        600
+      ],
       "credentials": {
         "notionApi": {
           "id": "5Oo5om15SSiHCmIa",
@@ -1182,7 +1311,10 @@
       "name": "Slack Error Notification",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [3760, 600],
+      "position": [
+        3760,
+        600
+      ],
       "continueOnFail": true
     },
     {
@@ -1193,7 +1325,10 @@
       "name": "Skip Processing",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [880, 400]
+      "position": [
+        880,
+        400
+      ]
     }
   ],
   "connections": {
